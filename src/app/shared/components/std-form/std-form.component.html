@@ -1,0 +1,32 @@
+<form #stdForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="fname">First Name</label>
+                <input required ngModel #fname="ngModel" name="fname" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input required ngModel #lname="ngModel" name="lname" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input required ngModel #email="ngModel" name="email" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="contact">contact</label>
+                <input required ngModel #contact="ngModel" name="contact" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="isActive">IsActive</label>
+                <select required ngModel #isActive="ngModel" name="isActive" class="form-control">
+                    <option value="true">YES</option>
+                    <option value="false">NO</option>
+                </select>
+            </div>
+
+            <button [disabled]="stdForm.invalid" *ngIf="!editMode" mat-raised-button color="primary" class="w-100">Add Student</button>
+            <button (click)="onupdate()" [disabled]="stdForm.invalid" *ngIf="editMode" mat-raised-button color="primary" class="w-100">Update Student</button>
+        </form>

@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-content class="table-responsive" *ngIf="stdArr.length > 0; else : noStudent">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Sr.No.</th>
+                <th>Full Name</th>
+                <th>IsActive</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of stdArr; let i = index; trackBy : trackByStdID">
+                    <td>{{i + 1}}</td>
+                    <td>{{std.fname}} {{std.lname}}</td>
+                    <td class="text-center"><mat-checkbox [checked]="std.isActive"></mat-checkbox></td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.contact}}</td>
+                    <td><button (click)="onEdit(std)" mat-raised-button color="primary" class="mr-2">Edit</button></td>
+                    <td><button (click)="onRemove(std.stdID)" mat-raised-button color="warn">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+    <ng-template #noStudent>
+        <p class="alert alert-info">No Student!!!</p>
+    </ng-template>
+</mat-card>
